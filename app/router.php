@@ -24,18 +24,10 @@ switch ($route[0]) {
         $parameters = $route[2];
         // We could do $container->get($controller) but $container->call()
         // does that automatically
-        //$container->call([App\Controller\HomeController::class, 'index']);
+        $container->call([App\Controller\HomeController::class, 'homepage']);
         //$container->call([Test::class, 'test']);
         //$container->call($controller, $parameters);
         break;
 }
 
 
-
-dump(Test::class);
-dump(App\Controller\HomeController::class);
-class Test{
-    public function test(){
-        dump('ok');
-    }
-}

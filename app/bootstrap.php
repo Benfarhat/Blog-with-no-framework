@@ -1,10 +1,5 @@
 <?php
-use Symfony\Component\Debug\Debug;
 use DI\ContainerBuilder;
-require __DIR__ . '/../vendor/autoload.php';
-
-/*Symfony Debug*/
-Debug::enable();
 
 /* Dependency Injection */
 $containerBuilder = new ContainerBuilder;

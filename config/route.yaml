@@ -1,0 +1,15 @@
+homepage:
+    method:     'GET' 
+    path:       's'
+    controller: 'App\Controller\HomeController'
+    action:     'homepage'
+blog_index:
+    method:     'GET, POST' 
+    path:       '/blog'
+    controller: 'App\Controller\BlogController'
+    action:     'index'
+blog_view:
+    method:     'GET' 
+    path:       '/blog/{id:\d+}'
+    controller: 'App\Controller\BlogController'
+    action:     'view'

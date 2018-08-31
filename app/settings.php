@@ -1,0 +1,7 @@
+<?php
+    return ['env' => [
+        'application_name' => "Your name application",
+        'brand' => "Frameworkless",
+        'owner' => 'Your Name',
+        'mode' => 'dev'
+    ]];

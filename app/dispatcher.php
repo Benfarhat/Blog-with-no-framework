@@ -1,5 +1,22 @@
 <?php
 use FastRoute\RouteCollector;
+use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Exception\ParseException;
+
+
+$dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $router) {
+
+    try {
+        $routes = Yaml::parseFile('../config/route.yaml');
+    } catch (ParseException $exception) {
+        printf('Unable to parse the YAML string: %s', $exception->getMessage());
+    }
+
+    foreach($routes as $route){ 
+        // $router->addRoute($method, $routePattern, $handler);
+        $router->addRoute($route["method"], $route["path"], [$route["controller"],$route["action"]]);
+    }
+});
 
 
 // Fetch method and URI from somewhere

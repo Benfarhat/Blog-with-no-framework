@@ -1,10 +1,10 @@
 homepage:
     method:     'GET' 
-    path:       's'
+    path:       '/'
     controller: 'App\Controller\HomeController'
     action:     'homepage'
 blog_index:
-    method:     'GET, POST' 
+    method:     ['GET', 'POST']
     path:       '/blog'
     controller: 'App\Controller\BlogController'
     action:     'index'

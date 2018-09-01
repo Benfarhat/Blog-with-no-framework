@@ -1,12 +1,9 @@
 <?php
 namespace App\Controller;
 
-class BlogController {
+class BlogController extends BaseController{
 
-    public function index()
-    {
 
-    }
 
     public function view()
     {

@@ -1,3 +1,4 @@
+# On pourrait ne pas avoir a mettre App\Controller et l'intégré automatiquement dans le router (au niveau du dispatcher)
 homepage:
     method:     'GET' 
     path:       '/'
@@ -12,4 +13,14 @@ blog_view:
     method:     'GET' 
     path:       '/blog/{id:\d+}'
     controller: 'App\Controller\BlogController'
+    action:  
+categorie_index:
+    method:     ['GET', 'POST']
+    path:       '/category'
+    controller: 'App\Controller\CategorieController'
+    action:     'index'
+categorie_view:
+    method:     'GET' 
+    path:       '/category/{id:\d+}'
+    controller: 'App\Controller\CategorieController'
     action:     'view'

@@ -2,6 +2,9 @@
 namespace App\Controller;
 
 use Twig_Environment;
+use Doctrine\DBAL\Connection;
+use Doctrine\ORM\EntityManager;
+use Doctrine\DBAL\DriverManager;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Exception\ParseException;
 
@@ -10,15 +13,28 @@ class BaseController {
 
     private $twig;
     private $env;
+    private $params;
 
     public function __construct(Twig_Environment $twig)
-    {
-        $this->twig = $twig;
+    {   
+
+        try {
+            $this->params = Yaml::parseFile('../config/database.yaml');
+        } catch (ParseException $exception) {
+            printf('Unable to parse the YAML string: %s', $exception->getMessage());
+        }
+        // Doit on intégrer ceci à l'autowiring?
+        // Vu qu'on utilise soit de l'__invoke soit du static
+        $config = new \Doctrine\DBAL\Configuration();
+        $conn = \Doctrine\DBAL\DriverManager::getConnection($this->params, $config);
+
         try {
             $this->env = Yaml::parseFile('../config/env.yaml');
         } catch (ParseException $exception) {
             printf('Unable to parse the YAML string: %s', $exception->getMessage());
         }
+        $this->twig = $twig;
+
     }
 
     public function __invoke(){
@@ -76,7 +92,7 @@ class BaseController {
         return true;
     }
 
-    public function index()
+    public function iandex()
     {
         dump('Index method is not defined in your controller!');
         return true;
